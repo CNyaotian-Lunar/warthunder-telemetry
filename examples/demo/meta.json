@@ -1,0 +1,14 @@
+{
+  "startedAt": "2026-09-21T06:47:50.000Z",
+  "me": "演示玩家",
+  "base": "http://127.0.0.1:8111",
+  "stateMs": 1000,
+  "objMs": 15000,
+  "maxMin": 180,
+  "aircraft": "fa_18c_late",
+  "endedAt": "2026-09-21T06:48:20.000Z",
+  "endReason": "演示数据结束",
+  "samples": 30,
+  "events": 3,
+  "rounds": 1
+}

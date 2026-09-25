@@ -1,0 +1,41 @@
+# ---- 本地临时产物 / 敏感文件（原始遥测、日志、凭据一律不入库）----
+node_modules/
+dist/
+build/
+out/
+__pycache__/
+*.pyc
+*.pyo
+logs/
+tmp/
+data/
+*.log
+*.out
+*.bak-*
+_trash/
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+credentials.yaml
+*.exe
+*.zip
+*.7z
+*.iso
+*.onnx
+*.mp4
+*.bin
+*.img
+*.dll
+*.whl
+*.tar.gz
+.DS_Store
+Thumbs.db
+
+# 原始遥测数据不入库（体积大、含本机路径）；示例见 examples/
+runs/
+
+# 示例夹具里的底图必须入库（否则仓库里的 SVG 是黑图）
+!examples/**/*.img

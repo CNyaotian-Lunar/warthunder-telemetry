@@ -1,0 +1,30 @@
+{
+  "name": "warthunder-telemetry",
+  "version": "1.1.0",
+  "description": "War Thunder 本地遥测采集与报告（读内置 8111 接口 → 原始数据 + 战斗报告/态势图/热力图/航迹）",
+  "type": "module",
+  "license": "MIT",
+  "author": "CNyaotian (with DeepSeek / DSH agent)",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "collect": "node wt-collect.mjs",
+    "report": "node wt-report.mjs",
+    "track": "node wt-track.mjs",
+    "heatmap": "node wt-heatmap.mjs",
+    "demo": "node wt-report.mjs examples/demo && node wt-track.mjs examples/demo && node wt-heatmap.mjs examples/demo",
+    "check": "node --check wt-args.mjs && node --check wt-collect.mjs && node --check wt-report.mjs && node --check wt-track.mjs && node --check wt-heatmap.mjs"
+  },
+  "files": [
+    "wt-*.mjs",
+    "wt.ps1",
+    "README.md",
+    "LICENSE",
+    "examples"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CNyaotian-Lunar/warthunder-telemetry.git"
+  }
+}

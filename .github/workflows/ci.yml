@@ -1,0 +1,28 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: 语法检查
+        run: npm run check
+      - name: 用示例夹具跑通三个脚本（可复现性回归）
+        run: |
+          node wt-report.mjs examples/demo
+          node wt-track.mjs examples/demo
+          node wt-heatmap.mjs examples/demo
+      - name: 夹具产出落盘（失败时便于排查）
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: demo-output
+          path: examples/demo/*.md

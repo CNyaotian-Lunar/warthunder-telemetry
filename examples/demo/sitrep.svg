@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1024" height="1024" viewBox="0 0 1024 1024">
+<rect width="1024" height="1024" fill="#0b0f0b"/>
+<image x="0" y="0" width="1024" height="1024" xlink:href="map.img" preserveAspectRatio="none" opacity="0.9"/>
+<polygon points="514.0,504 519.5,518 514.0,515 508.5,518" fill="#faC81E" stroke="#000000" stroke-width="0.6" transform="rotate(90.0 514.0 512.0)"><title>aircraft Player</title></polygon>
+<polygon points="524.3,514.2 529.8,528.2 524.3,525.2 518.8,528.2" fill="#174DFF" stroke="#000000" stroke-width="0.6" transform="rotate(90.0 524.3 522.2)"><title>aircraft Fighter</title></polygon>
+<polygon points="534.5,524.5 540,538.5 534.5,535.5 529,538.5" fill="#174DFF" stroke="#000000" stroke-width="0.6" transform="rotate(90.0 534.5 532.5)"><title>aircraft Fighter</title></polygon>
+<polygon points="544.8,534.7 550.3,548.7 544.8,545.7 539.3,548.7" fill="#174DFF" stroke="#000000" stroke-width="0.6" transform="rotate(90.0 544.8 542.7)"><title>aircraft Fighter</title></polygon>
+<g font-family="monospace" font-size="16" fill="#eaeaea"><rect x="8" y="8" width="330" height="46" fill="#000" opacity="0.55"/>
+<text x="16" y="30">态势快照 t=+15s（共 4 个对象）</text>
+<text x="16" y="54">aircraft: 4</text>
+</g></svg>

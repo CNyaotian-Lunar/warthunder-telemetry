@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="900" viewBox="0 0 1240 900" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <defs>
+    <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#58a6ff"/>
+    </marker>
+    <marker id="arw2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b949e"/>
+    </marker>
+  </defs>
+  <rect width="1240" height="900" fill="#0d1117"/>
+
+  <text x="48" y="58" font-size="27" font-weight="600" fill="#e6edf3">战雷遥测 · 采集与报告流水</text>
+  <text x="48" y="86" font-size="13.5" fill="#8b949e">把游戏内置的本地接口（127.0.0.1:8111）变成可回放的原始数据 + 一份战斗报告 · 只读、不联网、不改游戏、不注入进程</text>
+  <line x1="48" y1="106" x2="1192" y2="106" stroke="#21262d"/>
+
+  <text x="48"  y="140" font-size="14" font-weight="600" fill="#58a6ff" letter-spacing="1">采集</text>
+  <text x="396" y="140" font-size="14" font-weight="600" fill="#58a6ff" letter-spacing="1">原始数据（全部落 JSONL，可反复重算）</text>
+  <text x="914" y="140" font-size="14" font-weight="600" fill="#58a6ff" letter-spacing="1">报告器（各自读原始数据）</text>
+
+  <g>
+    <rect x="48" y="158" width="300" height="72" rx="9" fill="#161b22" stroke="#30363d"/>
+    <text x="68" y="187" font-size="15.5" font-weight="600" fill="#e6edf3">wt.ps1 · 一键入口</text>
+    <text x="68" y="209" font-size="12.5" fill="#8b949e">采集 → 报告 → 热区 → 航迹</text>
+
+    <rect x="48" y="248" width="300" height="150" rx="9" fill="#161b22" stroke="#30363d"/>
+    <text x="68" y="277" font-size="15.5" font-weight="600" fill="#e6edf3">wt-collect.mjs · 轮询</text>
+    <text x="68" y="301" font-size="12.5" fill="#8b949e">每秒 /state 飞行遥测</text>
+    <text x="68" y="322" font-size="12.5" fill="#8b949e">每 5 秒 /map_obj.json 战场态势</text>
+    <text x="68" y="343" font-size="12.5" fill="#8b949e">增量 /hudmsg 战斗日志</text>
+    <text x="68" y="364" font-size="12.5" fill="#8b949e">每 30 秒全量校准（防跨局漏事件）</text>
+    <text x="68" y="385" font-size="12.5" fill="#8b949e">一次性 /map.img 底图</text>
+
+    <rect x="48" y="416" width="300" height="112" rx="9" fill="#161b22" stroke="#30363d"/>
+    <text x="68" y="445" font-size="15.5" font-weight="600" fill="#e6edf3">自动停止判据</text>
+    <text x="68" y="469" font-size="12.5" fill="#8b949e">/state 连续 12 次失败（退游戏）</text>
+    <text x="68" y="490" font-size="12.5" fill="#8b949e">valid=false 连续 30 次（回机库）</text>
+    <text x="68" y="511" font-size="12.5" fill="#8b949e">或到达 --max-min（默认 180 分钟）</text>
+  </g>
+  <line x1="348" y1="322" x2="392" y2="322" stroke="#58a6ff" stroke-width="2" marker-end="url(#arw)"/>
+  <line x1="866" y1="322" x2="910" y2="322" stroke="#8b949e" stroke-width="1.6" marker-end="url(#arw2)"/>
+
+  <g>
+    <rect x="396" y="158" width="470" height="64" rx="9" fill="#161b22" stroke="#30363d"/>
+    <text x="416" y="184" font-size="14.5" font-weight="600" fill="#e6edf3">flight.jsonl</text>
+    <text x="416" y="205" font-size="12" fill="#8b949e">每秒一条（--state-ms）：/state 全字段 + t/ts + compass/bank/turn</text>
+
+    <rect x="396" y="232" width="470" height="64" rx="9" fill="#161b22" stroke="#30363d"/>
+    <text x="416" y="258" font-size="14.5" font-weight="600" fill="#e6edf3">events.jsonl</text>
+    <text x="416" y="279" font-size="12" fill="#8b949e">战斗日志增量（kind:'dmg'；pre:true 表示采集前已发生）</text>
+
+    <rect x="396" y="306" width="470" height="64" rx="9" fill="#161b22" stroke="#30363d"/>
+    <text x="416" y="332" font-size="14.5" font-weight="600" fill="#e6edf3">objects.jsonl</text>
+    <text x="416" y="353" font-size="12" fill="#8b949e">每 5 秒态势快照：各类型计数 + 单位列表（含归一化坐标）</text>
+
+    <rect x="396" y="380" width="470" height="64" rx="9" fill="#161b22" stroke="#30363d"/>
+    <text x="416" y="406" font-size="14.5" font-weight="600" fill="#e6edf3">marks.jsonl</text>
+    <text x="416" y="427" font-size="12" fill="#8b949e">分段标记：新开一局 / valid 变化 / 结束原因</text>
+
+    <rect x="396" y="454" width="470" height="64" rx="9" fill="#161b22" stroke="#30363d"/>
+    <text x="416" y="480" font-size="14.5" font-weight="600" fill="#e6edf3">meta.json + map.img</text>
+    <text x="416" y="501" font-size="12" fill="#8b949e">起止时间 / 机型 / 计数 / 结束原因 + 2048² 地图底图</text>
+
+    <rect x="396" y="528" width="470" height="64" rx="9" fill="#161b22" stroke="#30363d"/>
+    <text x="416" y="554" font-size="14.5" font-weight="600" fill="#e6edf3">examples/demo/ · 可复现夹具</text>
+    <text x="416" y="575" font-size="12" fill="#8b949e">合成数据，clone 下来直接 npm run demo（仓库 CI 也跑它）</text>
+  </g>
+
+  <g>
+    <rect x="914" y="158" width="278" height="88" rx="9" fill="#161b22" stroke="#30363d"/>
+    <text x="934" y="187" font-size="15.5" font-weight="600" fill="#e6edf3">wt-report.mjs</text>
+    <text x="934" y="209" font-size="12.5" fill="#8b949e">战斗报告</text>
+    <text x="934" y="231" font-size="12.5" fill="#58a6ff">report.md · sitrep.svg</text>
+
+    <rect x="914" y="258" width="278" height="88" rx="9" fill="#161b22" stroke="#30363d"/>
+    <text x="934" y="287" font-size="15.5" font-weight="600" fill="#e6edf3">wt-track.mjs</text>
+    <text x="934" y="309" font-size="12.5" fill="#8b949e">航迹还原（认「自己」）</text>
+    <text x="934" y="331" font-size="12.5" fill="#58a6ff">track.md · track.svg</text>
+
+    <rect x="914" y="358" width="278" height="88" rx="9" fill="#161b22" stroke="#30363d"/>
+    <text x="934" y="387" font-size="15.5" font-weight="600" fill="#e6edf3">wt-heatmap.mjs</text>
+    <text x="934" y="409" font-size="12.5" fill="#8b949e">缠斗热区（聚集度）</text>
+    <text x="934" y="431" font-size="12.5" fill="#58a6ff">heatmap.md · heatmap.svg</text>
+
+    <rect x="914" y="458" width="278" height="88" rx="9" fill="#161b22" stroke="#30363d" stroke-dasharray="5 4"/>
+    <text x="934" y="487" font-size="15.5" font-weight="600" fill="#e6edf3">wt-args.mjs</text>
+    <text x="934" y="509" font-size="12.5" fill="#8b949e">四个脚本共用参数解析</text>
+    <text x="934" y="531" font-size="12.5" fill="#8b949e">数值参数校验范围，非法立刻报错退出</text>
+  </g>
+
+  <rect x="48" y="610" width="1144" height="266" rx="10" fill="#0f141b" stroke="#21262d"/>
+  <text x="72" y="644" font-size="14" font-weight="600" fill="#58a6ff" letter-spacing="1">踩过的坑（README 原文节选）</text>
+
+  <circle cx="80" cy="676" r="4" fill="#58a6ff"/>
+  <text x="96" y="681" font-size="13" fill="#c9d1d9">hudmsg 里的 enemy 恒 false、sender 恒空 ⇒ 敌我与击杀者只能从 msg 文本解析，规则表是唯一入口。</text>
+
+  <circle cx="80" cy="710" r="4" fill="#58a6ff"/>
+  <text x="96" y="715" font-size="13" fill="#c9d1d9">msg 里每个汉字之间插了零宽字符 U+200B ⇒ 任何字符串匹配前必须先清洗，否则正则全不命中。</text>
+
+  <circle cx="80" cy="744" r="4" fill="#58a6ff"/>
+  <text x="96" y="749" font-size="13" fill="#c9d1d9">/map_obj.json 字段不统一：机场类是 sx/sy/ex/ey，飞机与地面单位是 x/y ⇒ 只取 sx/sy 会丢掉 60+ 个地面单位。</text>
+
+  <circle cx="80" cy="778" r="4" fill="#58a6ff"/>
+  <text x="96" y="783" font-size="13" fill="#c9d1d9">/hudmsg 跨局不清空、且新局 id 继续累加 ⇒ 采集器每 30 秒全量校准一次，防增量轮询永久漏事件。</text>
+
+  <circle cx="80" cy="812" r="4" fill="#58a6ff"/>
+  <text x="96" y="817" font-size="13" fill="#c9d1d9">自己那架飞机的 icon 就是 &quot;Player&quot;（96% 快照可直接取到）⇒ 航迹图按它定位；态势图只用游戏给的 color（本工具未额外标注己机）；热区图只统计聚集度。</text>
+
+  <circle cx="80" cy="846" r="4" fill="#58a6ff"/>
+  <text x="96" y="851" font-size="13" fill="#c9d1d9">采集起点不是起飞点：中途开录会让油量消耗率 / 最大过载等累计量失真 —— 想要完整包线必须在进战斗前开录。</text>
+</svg>
